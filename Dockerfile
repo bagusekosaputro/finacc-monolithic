@@ -38,14 +38,13 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 # Copy existing application directory contents
 COPY . /var/www
 
-# Install laravel dependencies
-RUN composer install --no-scripts --no-autoloader
-
 # Copy environment file
 COPY .env.example .env
 
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
+
+RUN composer install --ignore-platform-reqs --no-scripts
 
 # Change current user to www
 USER www
