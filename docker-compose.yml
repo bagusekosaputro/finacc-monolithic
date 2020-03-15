@@ -10,7 +10,15 @@ services:
     container_name: finacc-mono
     restart: unless-stopped
     tty: true
+    networks: 
+        - dev-server
+    ports: 
+        - 9000:9000
     environment:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
     working_dir: /var/www
+
+networks:
+    dev-server:
+        driver: bridge
