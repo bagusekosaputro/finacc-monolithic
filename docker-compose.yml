@@ -1,25 +1,25 @@
 version: '3'
 services:
-
+    
   #PHP Service
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: finacc:laravel
-    container_name: finacc-mono
-    restart: unless-stopped
-    tty: true
-    working_dir: /var/www
-    networks: 
-        - dev-server
-    ports: 
-        - 9000:9000
-    volumes: 
-        - ./:/var/www
-    environment:
-      SERVICE_NAME: finacc
-      SERVICE_TAGS: dev
+    app:
+        build:
+        context: .
+        dockerfile: Dockerfile
+        image: finacc:laravel
+        container_name: finacc-mono
+        restart: unless-stopped
+        tty: true
+        working_dir: /var/www
+        networks: 
+            - dev-server
+        ports: 
+            - 9000:9000
+        volumes: 
+            - ./:/var/www
+        environment:
+        SERVICE_NAME: finacc
+        SERVICE_TAGS: dev
 
     # Nginx service
     webserver:
