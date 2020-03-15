@@ -44,8 +44,6 @@ COPY .env.example .env
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
 
-RUN composer install --ignore-platform-reqs --no-scripts
-
 # Change current user to www
 USER www
 
