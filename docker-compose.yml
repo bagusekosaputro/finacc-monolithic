@@ -1,12 +1,12 @@
 version: '3'
 services:
-    
+
   #PHP Service
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    image: digitalocean.com/php
+    image: finacc:laravel
     container_name: finacc-mono
     restart: unless-stopped
     tty: true
