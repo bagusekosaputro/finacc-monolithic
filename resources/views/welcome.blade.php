@@ -81,7 +81,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    FinAcc
+                    Manage your expense with ease.
                 </div>
 
                 <div class="links">
