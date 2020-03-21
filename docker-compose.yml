@@ -36,6 +36,22 @@ services:
         networks:
             - dev-server
 
+    # PostgreSQL DB
+    pgsql:
+        image: postgres:9.6-alpine
+        container_name: finacc-db
+        restart: unless-stopped
+        environment:
+            POSTGRES_USER: finacc
+            POSTGRES_PASSWORD: adm1nf1nAcc
+            POSTGRES_DB: finacc
+        volumes: 
+            - ./pgdata:/var/lib/postgresql/data
+        ports: 
+            - "5432:5432"
+        networks: 
+            - dev-server
+
 networks:
     dev-server:
         driver: bridge
