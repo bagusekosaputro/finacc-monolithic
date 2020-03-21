@@ -82,9 +82,8 @@
             <div class="content">
                 <div class="title m-b-md">
                     FinAcc
-                    Manage your expense with ease.
                 </div>
-
+                <h2>Manage your expense with ease</h2>
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
