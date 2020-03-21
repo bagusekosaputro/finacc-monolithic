@@ -6,7 +6,7 @@
 <!-- Header section -->
 <header class="header-section clearfix">
     <div class="container-fluid">
-        <a href="index.html" class="site-logo">
+        <a href="/" class="site-logo">
             <img src="img/logo.png" alt="">
         </a>
         <div class="responsive-bar"><i class="fa fa-bars"></i></div>
@@ -17,7 +17,7 @@
                 <li><a href="">Solution</a></li>
                 <li><a href="">Features</a></li>
                 <li><a href="">News</a></li>
-                <li><a href="">About</a></li>
+                <li><a href="/about">About</a></li>
                 <li><a href="">Contact</a></li>
             </ul>
         </nav>
