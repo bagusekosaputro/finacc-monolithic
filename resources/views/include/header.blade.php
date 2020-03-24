@@ -11,7 +11,7 @@
         </a>
         <div class="responsive-bar"><i class="fa fa-bars"></i></div>
         <a href="" class="user"><i class="fa fa-user"></i></a>
-        <a href="" class="site-btn">Sign Up Free</a>
+        <a href="{{url('register')}}" class="site-btn">Sign Up Free</a>
         <nav class="main-menu">
             <ul class="menu-list">
                 <li><a href="">Solution</a></li>

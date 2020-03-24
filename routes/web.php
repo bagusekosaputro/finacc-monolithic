@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('main.about');
 });
+
+Route::get('register', 'AuthController@registration');
+Route::post('register', 'AuthController@create');
+Route::get('login', 'AuthController@index');
+Route::post('login', 'AuthController@doLogin');
