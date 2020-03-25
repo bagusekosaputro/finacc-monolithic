@@ -54,6 +54,16 @@ class AuthController extends Controller
     public function doLogin(Request $request)
     {
         $this->loginValidator($request->all())->validate();
+        
+        if (Auth::attempt($request->only('email', 'password'))) 
+        {
+            return redirect()->intended('dashboard');
+        }
+    }
+
+    public function doResetPassword(Request $request)
+    {
+
     }
     
     public function logout()

@@ -18,17 +18,25 @@
         <div class="row">
             <div class="col-lg-6 offset-lg-6 about-text">
                 <form method="POST" action="/login">
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" name="email" class="form-control">
+                        @if ($errors->has('email'))
+                            <span class="error">{{ $errors->first('email') }}</span>
+                        @endif    
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" name="password" class="form-control">
+                        @if ($errors->has('password'))
+                            <span class="error">{{ $errors->first('password') }}</span>
+                        @endif 
                     </div>
                     <div class="form-group">
                         Create an <a href="{{url('register')}}">account</a>
                         <button type="submit" class="btn btn-primary pull-right">Sign In</button>
+                        <!-- <a href="{{url('reset')}}" class="pull-right">Forgot password</a> -->
                     </div>
                 </form>
             </div>
