@@ -3,30 +3,30 @@
     <div class="container">
         <div class="row spad">
             <div class="col-md-6 col-lg-3 footer-widget">
-                <img src="img/logo.png" class="mb-4" alt="">
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia dese mollit anim id est laborum.</p>
+                <img src="{{ asset('/img/hitungin-logo-1.png') }}" class="mb-4" alt="Hitungin Logo" width="136px">
+                <br>
                 <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
             </div>
             <div class="col-md-6 col-lg-2 offset-lg-1 footer-widget">
-                <h5 class="widget-title">Resources</h5>
+                <h5 class="widget-title">Information</h5>
                 <ul>
-                    <li><a href="#">How to Buy Coin</a></li>
-                    <li><a href="#">Coin Overview</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <!-- <li><a href="#">Coin Overview</a></li>
                     <li><a href="#">Blog News</a></li>
                     <li><a href="#">How to Sell Coin</a></li>
-                    <li><a href="#">Purchase Theme</a></li>
+                    <li><a href="#">Purchase Theme</a></li> -->
                 </ul>
             </div>
             <div class="col-md-6 col-lg-2 offset-lg-1 footer-widget">
-                <h5 class="widget-title">Quick Links</h5>
+                <h5 class="widget-title">Customer Care</h5>
                 <ul>
-                    <li><a href="#">Network Stats</a></li>
-                    <li><a href="#">Block Explorers</a></li>
+                    <li><a href="#">Help</a></li>
+                    <!-- <li><a href="#">Block Explorers</a></li>
                     <li><a href="#">Governance</a></li>
                     <li><a href="#">Exchange Markets</a></li>
-                    <li><a href="#">Get Theme</a></li>
+                    <li><a href="#">Get Theme</a></li> -->
                 </ul>
             </div>
             <div class="col-md-6 col-lg-3 footer-widget pl-lg-5 pl-3">

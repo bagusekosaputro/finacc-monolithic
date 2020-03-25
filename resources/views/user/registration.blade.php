@@ -1,23 +1,13 @@
 @extends('layout.default')
 @section('content')
 <!-- Registration section -->
-<section class="page-info-section">
-    <div class="container">
-        <h2>Registration</h2>
-        <div class="site-beradcamb">
-            <a href="">Home</a>
-            <span><i class="fa fa-angle-right"></i> Registration</span>
-        </div>
-    </div>
-</section>
-<!-- Registration section end -->
-
-<!-- About section -->
-<section class="about-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-6 about-text">
-                <form method="POST" action="/register">
+<section class="hero-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 hero-text">
+				<h2>Manage <span>Expense</span> <br>With ease</h2>
+				<h4>Easily managed your daily expenses in one apps</h4>
+				<form class="hero-subscribe-from" method="POST" action="{{ url('register') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -35,16 +25,16 @@
                     </div>
                     <div class="form-group">
                         Already have an <a href="{{url('login')}}">account</a>
-                        <button type="submit" class="btn btn-primary pull-right">Sign Up</button>
+                        <button type="submit" class="site-btn sb-gradients pull-right">Sign Up</button>
                     </div>
-                </form>
-            </div>
-        </div>
-        <div class="about-img">
-            <img src="img/about-img.png" alt="">
-        </div>
-    </div>
+				</form>
+			</div>
+			<div class="col-md-6">
+				<img src="img/laptop.png" class="laptop-image" alt="">
+			</div>
+		</div>
+	</div>
 </section>
-<!-- About section end -->
+<!-- Registration section end -->
 
 @stop
