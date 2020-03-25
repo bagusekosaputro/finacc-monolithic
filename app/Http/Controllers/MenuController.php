@@ -14,6 +14,6 @@ class MenuController extends Controller
             return view('user.dashboard');
         }
 
-        return redirect()->route('/');
+        return Redirect('login');
     }
 }
