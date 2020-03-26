@@ -5,11 +5,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 hero-text">
-				<h2>Manage <span>Expense</span> <br>With ease</h2>
-				<h4>Easily managed your daily expenses in one apps</h4>
+				<h2>Catat <span>Pengeluaranmu</span> <br>dengan mudah</h2>
+				<h4>Aplikasi Web untuk mencatat pengeluaran harianmu</h4>
 				<form class="hero-subscribe-from">
 					<input type="text" placeholder="Enter your email">
-					<button class="site-btn sb-gradients">Get Started</button>
+					<button class="site-btn sb-gradients">Mulai</button>
 				</form>
 			</div>
 			<div class="col-md-6">

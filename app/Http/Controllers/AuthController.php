@@ -49,7 +49,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return Redirect('login');
+        return redirect('/register')->with(['error' => 'Pendaftaran gagal. Silahkan coba lagi.']);
     }
 
     public function doLogin(Request $request)
@@ -60,6 +60,8 @@ class AuthController extends Controller
         {
             return redirect()->intended('dashboard');
         }
+
+        return redirect('/login')->with(['error' => 'Email/Password tidak sesuai.']);
     }
 
     public function doResetPassword(Request $request)

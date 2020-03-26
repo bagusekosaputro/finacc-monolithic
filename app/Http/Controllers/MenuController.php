@@ -16,4 +16,9 @@ class MenuController extends Controller
 
         return Redirect('login');
     }
+
+    public function userProfile($uuid)
+    {
+        return view('user.profile');
+    }
 }

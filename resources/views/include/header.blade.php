@@ -11,12 +11,12 @@
         </a>
         <div class="responsive-bar"><i class="fa fa-bars"></i></div>
         <a href="" class="user"><i class="fa fa-user"></i></a>
-        <a href="{{url('register')}}" class="site-btn">Sign Up Free</a>
+        <a href="{{url('register')}}" class="site-btn">Daftar Gratis</a>
         <nav class="main-menu">
             <ul class="menu-list">
                 <li><a href="">Features</a></li>
                 <li><a href="">News</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="/about">Tentang Kami</a></li>
             </ul>
         </nav>
     </div>

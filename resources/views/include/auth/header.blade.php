@@ -1,20 +1,20 @@
 <div class="sidebar" data-color="purple" data-background-color="white" data-image="{{ asset('/img/hitungin-logo-1.png') }}">
       
   <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-      FinAcc
+      Hitungin
     </a></div>
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item active  ">
-        <a class="nav-link" href="./dashboard.html">
+        <a class="nav-link" href="{{ url('dashboard') }}">
           <i class="material-icons">dashboard</i>
-          <p>Dashboard</p>
+          <p>Beranda</p>
         </a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="./user.html">
+        <a class="nav-link" href="{{ url('profile'.'/'.Auth::user()->id) }}">
           <i class="material-icons">person</i>
-          <p>User Profile</p>
+          <p>Profil Saya</p>
         </a>
       </li>
       <li class="nav-item ">
@@ -23,7 +23,7 @@
           <p>Table List</p>
         </a>
       </li>
-      <li class="nav-item ">
+      <!-- <li class="nav-item ">
         <a class="nav-link" href="./typography.html">
           <i class="material-icons">library_books</i>
           <p>Typography</p>
@@ -40,7 +40,7 @@
           <i class="material-icons">location_ons</i>
           <p>Maps</p>
         </a>
-      </li>
+      </li> -->
       <li class="nav-item ">
         <a class="nav-link" href="./notifications.html">
           <i class="material-icons">notifications</i>

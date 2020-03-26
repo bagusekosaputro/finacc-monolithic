@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,4 @@ Route::get('login', 'AuthController@index');
 Route::post('login', 'AuthController@doLogin');
 Route::get('dashboard', 'MenuController@dashboard');
 Route::get('logout', 'AuthController@logout');
+Route::get('profile/{id}', 'MenuController@userProfile')->middleware('auth');
