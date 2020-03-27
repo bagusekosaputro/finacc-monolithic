@@ -45,11 +45,12 @@ class AuthController extends Controller
         $user = User::create([
             'id' => Uuid::uuid1()->toString(),
             'name' => $this->extractName($request->email),
+            'username' => $this->extractName($request->email),
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
-
-        return redirect('/register')->with(['error' => 'Pendaftaran gagal. Silahkan coba lagi.']);
+        
+        return redirect('/login')->with(['success' => 'Pendaftaran berhasil. Silahkan masuk dengan akun anda.']);
     }
 
     public function doLogin(Request $request)

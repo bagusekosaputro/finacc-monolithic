@@ -13,9 +13,13 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        \Doctrine\DBAL\Types\Type::addType('uuid', 'Ramsey\Uuid\Doctrine\UuidType');
+
         Schema::create('users', function (Blueprint $table) {
-            $table->string('id', 32)->primary();
+            $table->uuid('id')->primary();
             $table->string('name');
+            $table->string('username');
+            $table->string('profile_image')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
