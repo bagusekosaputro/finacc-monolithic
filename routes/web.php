@@ -24,8 +24,9 @@ Route::get('/about', function () {
 
 Route::get('register', 'AuthController@registration');
 Route::post('register', 'AuthController@create');
-Route::get('login', 'AuthController@index');
+Route::get('login', 'AuthController@index')->name('login');
 Route::post('login', 'AuthController@doLogin');
 Route::get('dashboard', 'MenuController@dashboard');
 Route::get('logout', 'AuthController@logout');
 Route::get('profile/{id}', 'MenuController@userProfile')->middleware('auth');
+Route::get('book-keeping/{id}', 'MenuController@bookKeeping')->middleware('auth');
