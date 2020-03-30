@@ -42,29 +42,29 @@
                             @endif
                             <form class="user" method="POST" action="{{ url('register') }}">
                                 {{ csrf_field() }}
-                                <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
-                                </div>
-                                </div>
+                                <!-- <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                                    </div>
+                                </div> -->
                                 <div class="form-group">
                                 <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
                                     @if ($errors->has('email'))
-                                        <span class="error">{{ $errors->first('email') }}</span>
+                                        <small class="form-text text-muted">{{ $errors->first('email') }}</small>
                                     @endif 
                                 </div>
                                 <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                     @if ($errors->has('password'))
-                                        <span class="error">{{ $errors->first('password') }}</span>
+                                        <small class="form-text text-muted">{{ $errors->first('password') }}</small>
                                     @endif  
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                    <input type="password" name="password_confirmation" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
                                 </div>
                                 </div>
                                 <button class="btn btn-primary btn-user btn-block">

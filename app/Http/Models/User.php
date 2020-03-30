@@ -41,11 +41,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // public static function boot()
-    // {
-    //     static::creating(function ($model)
-    //     {
-    //         $model->id = Uuid::uuid4()->toString();
-    //     });
-    // }
 }

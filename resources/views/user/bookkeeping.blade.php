@@ -44,6 +44,10 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="amount">Transaction Date</label>
+                <input type="text" data-provide="datepicker" id="datepicker" class="form-control" name="transaction_date">
+            </div>
+            <div class="form-group">
                 <label for="amount">Amount</label>
                 <input type="number" class="form-control" name="amount">
             </div>
@@ -60,4 +64,13 @@
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function() {
+
+    $('.datepicker').datepicker({
+      format: 'mm/dd/yyyy',
+      startDate: '-3d'
+  });
+  });
+</script>
 @stop

@@ -12,3 +12,6 @@
 
 <!-- Custom styles for this template-->
 <link href="{{ asset('/auth/css/sb-admin-2.min.css') }}" rel="stylesheet">
+<!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+<!-- <script src="{{ asset('/js/jquery-3.2.1.min.js') }}"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
