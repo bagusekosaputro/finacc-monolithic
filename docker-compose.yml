@@ -15,8 +15,6 @@ services:
             - dev-server
         ports: 
             - 9000:9000
-        volumes: 
-            - ./:/var/www
         environment:
             SERVICE_NAME: finacc
             SERVICE_TAGS: dev
