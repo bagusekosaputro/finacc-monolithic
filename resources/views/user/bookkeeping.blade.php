@@ -65,12 +65,12 @@
   </div>
 </div>
 <script>
-  $(document).ready(function() {
-
-    $('.datepicker').datepicker({
-      format: 'mm/dd/yyyy',
-      startDate: '-3d'
-  });
+  $( document ).ready(function() {
+    console.log("jQuery is working");
+    // $('#datepicker').datepicker({
+    //   format: 'mm/dd/yyyy',
+    //   startDate: '-3d'
+    // });
   });
 </script>
 @stop

@@ -51,6 +51,9 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('/auth/js/sb-admin-2.min.js') }}"></script>
 
+    <script src="{{ asset('/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
     <!-- Page level plugins -->
     <!-- <script src="{{ asset('/auth/vendor/chart.js/Chart.min.js') }}"></script> -->
 
