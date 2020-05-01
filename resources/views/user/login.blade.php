@@ -46,7 +46,7 @@
                                         </div>
                                     @endif
                                     <form class="user" method="POST" action="{{ url('login') }}">
-                                        {{ csrf_field() }}
+                                        @csrf
                                         <div class="form-group">
                                             <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                             @if ($errors->has('email'))
