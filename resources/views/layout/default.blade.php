@@ -8,5 +8,5 @@
 
     @yield('content')
     
-    @include('include.footer')s
+    @include('include.footer')
 </body>

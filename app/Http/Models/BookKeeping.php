@@ -9,7 +9,15 @@ class BookKeeping extends Model
     protected $table = 'book_keeping';
 
     protected $fillable = [
-        'transaction_type', 'transaction_date', 'amount', 'description', 'img', 'day', 'month', 'year'
+        'user_id',
+        'transaction_type', 
+        'transaction_date', 
+        'amount', 
+        'description', 
+        'img', 
+        'day', 
+        'month', 
+        'year'
     ];
 
     protected $hidden = [
@@ -17,6 +25,6 @@ class BookKeeping extends Model
     ];
 
     protected $casts = [
-        'transaction_date' => 'datetime',
+        'transaction_date' => 'date',
     ];
 }

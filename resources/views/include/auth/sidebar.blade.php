@@ -26,7 +26,7 @@
 
 <!-- Nav Item - Tables -->
 <li class="nav-item">
-  <a class="nav-link" href="{{ url('book-keeping'.'/'.Auth::user()->id) }}">
+  <a class="nav-link" href="{{ url('transaction'.'/'.Auth::user()->id) }}">
     <i class="fas fa-fw fa-table"></i>
     <span>Transactions</span></a>
 </li>

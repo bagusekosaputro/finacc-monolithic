@@ -40,8 +40,10 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer install --no-scripts && composer dump-autoload --optimize
 
+# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # Copy environment file
-COPY .env.example /var/www/.env
+COPY ./.env.example /var/www/.env
 
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
