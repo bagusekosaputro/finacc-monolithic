@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -42,15 +44,27 @@ class AuthController extends Controller
     {
         $this->validator($request->all())->validate();
         
-        $user = User::create([
-            'id' => Uuid::uuid1()->toString(),
-            'name' => $this->extractName($request->email),
-            'username' => $this->extractName($request->email),
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        $result = DB::transaction(function() use ($request) 
+        {
+            try 
+            {
+                $user = User::create([
+                    'id' => Uuid::uuid1()->toString(),
+                    'name' => $this->extractName($request->email),
+                    'username' => $this->extractName($request->email),
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password)
+                ]);
+                
+                return redirect('/login')->with(['success' => 'Registration success. Please login.']);
+            } catch (Exception $e) 
+            {
+                return redirect('/register')->with(['error' => $e->getMessage()]);
+            }
+        });
+
+        return $result;
         
-        return redirect('/login')->with(['success' => 'Pendaftaran berhasil. Silahkan masuk dengan akun anda.']);
     }
 
     public function doLogin(Request $request)
@@ -62,7 +76,7 @@ class AuthController extends Controller
             return redirect()->intended('dashboard');
         }
 
-        return redirect('/login')->with(['error' => 'Email/Password tidak sesuai.']);
+        return redirect('/login')->with(['error' => 'Email/Password not matched.']);
     }
 
     public function doResetPassword(Request $request)

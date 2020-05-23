@@ -18,3 +18,5 @@
 <script src="{{ asset('/auth/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{ asset('trumbowyg/dist/ui/trumbowyg.min.css') }}">
+<link rel="stylesheet" href="{{ asset('trumbowyg/dist/plugins/table/ui/trumbowyg.table.min.css') }}">

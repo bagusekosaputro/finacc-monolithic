@@ -2,7 +2,17 @@
 @section('content')
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Transactions</h1>
-
+@if ($message = Session::get('error'))
+    <div class="alert alert-danger alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button> 
+        <strong>{{ $message }}</strong>
+    </div>
+@elseif (session('success'))
+  <div class="alert alert-success alert-block">
+      <button type="button" class="close" data-dismiss="alert">×</button> 
+      <strong>{{ session('success') }}</strong>
+  </div>
+@endif
 <div class="card shadow mb-4">
     <div class="card-header py-3 text-right">
         <button class="btn btn-primary" data-toggle="modal" data-target="#addTransactionModal"><i class="fas fa-plus"></i> <span>Add</span></button>
@@ -28,7 +38,10 @@
                       <td>{{ number_format($transaction->amount, 0) }}</td>
                       <td>{{ $transaction->transaction_date->format('Y-m-d') }}</td>
                       <td>{{ $transaction->description }}</td>
-                      <td><button class="btn btn-sm btn-primary update-transaction" data-toggle="modal" data-target="#updateTransactionModal"><i class="fas fa-edit"></i></button> <span><button class="btn btn-sm btn-danger delete-transaction"><i class="far fa-trash-alt"></i></button></span></td>
+                      <td>
+                        <button data-id="{{ $transaction->id }}" data-url="{{ url('transaction/update/'.$transaction->id) }}" class="btn btn-sm btn-primary update-transaction" data-toggle="modal" data-target="#updateTransactionModal"><i class="fas fa-edit"></i></button> 
+                        <span><button class="btn btn-sm btn-danger delete-transaction"><i class="far fa-trash-alt"></i></button></span>
+                      </td>
                     </tr>
                   @endforeach
                 </tbody>
@@ -48,7 +61,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ url('transaction/create') }}" method="POST">
+      <form action="{{ url('transaction/create') }}" method="POST" id="createTransaction">
       @csrf
       <div class="modal-body">
             <div class="form-group">
@@ -68,7 +81,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" rows="3" name="description"></textarea>
+                <textarea class="form-control trx-description" id="editor" rows="5" name="description"></textarea>
             </div>
       </div>
       <div class="modal-footer">
@@ -86,12 +99,12 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update Transaction</h5>
+        <h5 class="modal-title" id="updateTrxTitle">Update Transaction</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ url('transaction/update') }}" method="POST">
+      <form action="#" method="POST" id="updateTransaction">
       @csrf
       <div class="modal-body">
             <div class="form-group">
@@ -103,7 +116,7 @@
             </div>
             <div class="form-group">
                 <label for="amount">Transaction Date</label>
-                <input type="text" data-provide="datepicker" id="datepicker" class="form-control" name="transaction_date">
+                <input type="text" data-provide="datepicker" id="datepicker2" class="form-control" name="transaction_date">
             </div>
             <div class="form-group">
                 <label for="amount">Amount</label>
@@ -111,7 +124,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" rows="3" name="description"></textarea>
+                <textarea class="form-control trx-description" rows="3" name="description"></textarea>
             </div>
       </div>
       <div class="modal-footer">
@@ -124,6 +137,10 @@
 </div>
 <!-- end modal update transaction -->
 
+<script src="{{ asset('trumbowyg/dist/trumbowyg.min.js') }}"></script>
+<script src="{{ asset('trumbowyg/dist/plugins/table/trumbowyg.table.min.js') }}"></script>
+<script src="{{ asset('trumbowyg/dist/plugins/base64/trumbowyg.base64.min.js') }}"></script>
+
 <script>
   $( document ).ready(function() {
     $('#datepicker').datepicker({
@@ -131,8 +148,48 @@
       format: 'yyyy-mm-dd'
     });
 
+    $('#datepicker2').datepicker({
+      uiLibrary: 'bootstrap4',
+      format: 'yyyy-mm-dd'
+    });
+
     $('#addTransactionModal').on('hidden.bs.modal', function () {
       $('#addTransactionModal form')[0].reset();
+    });
+
+    $('#updateTransactionModal').on('hidden.bs.modal', function (e) {
+      $('#updateTransactionModal form')[0].reset();
+    })
+
+    $('.update-transaction').on('click', function() {
+      var url = $(this).data("url");
+      var trxId = $(this).data("id");
+
+    $("#updateTransaction").attr("action", url);
+      $("#updateTrxTitle").html("Update Transaction #"+trxId);
+    });
+
+    $('.trx-description').trumbowyg({
+      autogrow: true,
+      semantic: false,
+      btns: [
+          ['viewHTML'],
+          ['undo', 'redo'],
+          ['formatting'],
+          ['strong', 'em', 'del'],
+          ['superscript', 'subscript'],
+          ['table'],
+          ['link'],
+          ['base64'],
+          ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+          ['unorderedList', 'orderedList'],
+          
+      ],
+      plugins: {
+        table: {
+          styler: "table table-bordered"
+        }
+      }
     });
   });
 </script>
