@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('main.home');
-});
+Route::get('/', 'AuthController@index')->name('login');
 
 Route::get('/about', function () {
     return view('main.about');
