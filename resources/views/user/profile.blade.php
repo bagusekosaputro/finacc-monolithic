@@ -3,110 +3,144 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-            <div class="card-header card-header-primary">
-                <h4 class="card-title">Edit Profile</h4>
-                <p class="card-category">Complete your profile</p>
-            </div>
-            <div class="card-body">
-                <form>
-                <div class="row">
-                    <div class="col-md-5">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Company (disabled)</label>
-                        <input type="text" class="form-control" disabled>
+            <div class="col-md-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#password">Password</a>
+                    </li>
+                </ul>
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button> 
+                        <strong>{{ $message }}</strong>
                     </div>
+                @elseif (session('success'))
+                    <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button> 
+                        <strong>{{ session('success') }}</strong>
                     </div>
-                    <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Username</label>
-                        <input type="text" class="form-control">
+                @endif
+                <div class="card tab-content">
+                    <div class="card-header card-header-primary">
+                        
                     </div>
+                    <div class="card-body tab-pane active" id="profile">
+                        <form action="{{ url('profile/update/'.Auth::user()->id) }}" method="POST">
+                        @csrf
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Email</label>
+                                        <input type="text" value="{{ Auth::user()->email }}" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Full Name</label>
+                                        <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="bmd-label-floating">Profile Image</label>
+                                    <div class="custom-file">
+                                        <input type="file" name="profile_image" accept="image/*" class="custom-file-input">
+                                        <label class="custom-file-label">Choose file</label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-3">
+                                <!-- <div class="form-group">
+                                    <label class="bmd-label-floating">Country</label>
+                                    <input type="text" class="form-control">
+                                </div> -->
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- <div class="form-group">
+                                        <label class="bmd-label-floating">Postal Code</label>
+                                        <input type="text" class="form-control">
+                                    </div> -->
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button type="cancel" class="btn btn-danger">Cancel</button>
+                                    <span>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
                     </div>
-                    <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Email address</label>
-                        <input type="email" class="form-control">
-                    </div>
+                    <div class="card-body tab-pane fade" id="password">
+                        <form action="{{ url('profile/change-password/'.Auth::user()->id) }}" method="POST">
+                        @csrf
+                            <!-- <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Current Password</label>
+                                        <input type="password" name="current_password" class="form-control">
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">New Password</label>
+                                        <input type="password" name="new_password" class="form-control">
+                                        @if ($errors->has('new_password'))
+                                            <small class="form-text text-muted">{{ $errors->first('new_password') }}</small>
+                                        @endif  
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Confirm Password</label>
+                                        <input type="password" name="password_confirmation" class="form-control">
+                                        @if ($errors->has('password_confirmation'))
+                                            <small class="form-text text-muted">{{ $errors->first('password_confirmation') }}</small>
+                                        @endif  
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button type="cancel" class="btn btn-danger">Cancel</button>
+                                    <span>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Fist Name</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    </div>
-                    <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Last Name</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Adress</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">City</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    </div>
-                    <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Country</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    </div>
-                    <div class="col-md-4">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Postal Code</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                    <div class="form-group">
-                        <label>About Me</label>
-                        <div class="form-group">
-                        <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                        <textarea class="form-control" rows="5"></textarea>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
-                <div class="clearfix"></div>
-                </form>
             </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-profile">
-            <div class="card-avatar">
-                <a href="javascript:;">
-                <img class="img" src="{{ asset('auth/img/faces/marc.jpg') }}" />
-                </a>
-            </div>
-            <div class="card-body">
-                <h6 class="card-category text-gray">Username</h6>
-                <h4 class="card-title">{{ Auth::user()->name }}</h4>
-                <p class="card-description">
-                Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                </p>
-            </div>
-            </div>
-        </div>
         </div>
     </div>
     </div>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                $('#blah').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @stop

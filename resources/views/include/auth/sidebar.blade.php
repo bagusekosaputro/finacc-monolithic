@@ -30,6 +30,11 @@
     <i class="fas fa-fw fa-table"></i>
     <span>Transactions</span></a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="{{ url('profile'.'/'.Auth::user()->id) }}">
+    <i class="fas fa-fw fa-user"></i>
+    <span>Profile</span></a>
+</li>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
