@@ -38,7 +38,7 @@ class UserController extends Controller
             try 
             {
 
-                User::find($id)->update(['password'=> Hash::make($request->password)]);
+                $user = User::find($id)->update(['password'=> Hash::make($request->new_password)]);
 
                 return redirect('profile/'.Auth::user()->id)->with(['success' => 'Password changed!']);
             } catch (Exception $e) 
