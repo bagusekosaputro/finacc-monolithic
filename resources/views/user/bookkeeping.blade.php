@@ -39,7 +39,16 @@
                       <td>{{ $transaction->transaction_date->format('Y-m-d') }}</td>
                       <td>{{ $transaction->description }}</td>
                       <td>
-                        <button data-id="{{ $transaction->id }}" data-url="{{ url('transaction/update/'.$transaction->id) }}" class="btn btn-sm btn-primary update-transaction" data-toggle="modal" data-target="#updateTransactionModal"><i class="fas fa-edit"></i></button> 
+                        <button 
+                        data-id="{{ $transaction->id }}" 
+                        data-amount="{{ $transaction->amount }}" 
+                        data-url="{{ url('transaction/update/'.$transaction->id) }}" 
+                        data-date="{{ $transaction->transaction_date->format('Y-m-d') }}"
+                        data-desc="{{ $transaction->description }}"
+                        data-type="{{ $transaction->transaction_type }}"
+                        class="btn btn-sm btn-primary update-transaction" 
+                        data-toggle="modal" 
+                        data-target="#updateTransactionModal"><i class="fas fa-edit"></i></button> 
                         <span><button class="btn btn-sm btn-danger delete-transaction"><i class="far fa-trash-alt"></i></button></span>
                       </td>
                     </tr>
@@ -109,7 +118,7 @@
       <div class="modal-body">
             <div class="form-group">
                 <label for="transactionType">Transaction Type</label>
-                <select name="transaction_type" class="form-control">
+                <select name="transaction_type" class="form-control" id="updateTrx">
                     <option value="credit">Credit</option>
                     <option value="debet">Debet</option>
                 </select>
@@ -120,7 +129,7 @@
             </div>
             <div class="form-group">
                 <label for="amount">Amount</label>
-                <input type="number" class="form-control" name="amount" required>
+                <input type="number" class="form-control" name="amount" id="updateAmount" required>
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
@@ -162,10 +171,18 @@
     })
 
     $('.update-transaction').on('click', function() {
-      var url = $(this).data("url");
-      var trxId = $(this).data("id");
+      let url = $(this).data("url");
+      let trxId = $(this).data("id");
+      let description = $(this).data("desc");
+      let amount = parseInt($(this).data("amount"));
+      let date = $(this).data("date");
+      let trx_type = $(this).data("type");
+      
+      $("#updateTrx").val(trx_type);
+      $("#updateAmount").val(amount);
+      $("#datepicker2").val(date);
 
-    $("#updateTransaction").attr("action", url);
+      $("#updateTransaction").attr("action", url);
       $("#updateTrxTitle").html("Update Transaction #"+trxId);
     });
 
@@ -183,7 +200,6 @@
           ['base64'],
           ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
           ['unorderedList', 'orderedList'],
-          
       ],
       plugins: {
         table: {

@@ -26,7 +26,8 @@ class MenuController extends Controller
 
     public function bookKeeping($uuid)
     {
-        $transactions = BookKeeping::where('user_id', '=', $uuid)->orderBy('id', 'asc')->simplePaginate(10);
+        $month = date('m');
+        $transactions = BookKeeping::where('user_id', '=', $uuid)->where('month', '=', $month)->orderBy('id', 'asc')->simplePaginate(10);
         
         return view('user.bookkeeping', ['transactions' => $transactions]);
     }

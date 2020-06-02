@@ -30,6 +30,7 @@ Route::get('logout', 'AuthController@logout');
 Route::get('profile/{id}', 'MenuController@userProfile')->middleware('auth');
 Route::get('transaction/{id}', 'MenuController@bookKeeping')->middleware('auth');
 Route::post('transaction/create', 'BookKeepingController@saveTransaction')->middleware('auth');
+Route::post('transaction/update/{id}', 'BookKeepingController@updateTransaction')->middleware('auth');
 Route::get('profile/{id}', 'UserController@profile')->middleware('auth')->name('profile');
 Route::post('profile/update/{id}', 'UserController@doUpdateProfile')->middleware('auth');
 Route::post('profile/change-password/{id}', 'UserController@changePassword')->middleware('auth');
